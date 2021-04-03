@@ -17,6 +17,8 @@ public class ModificationProperty {
     private List<AttributeItem> applicationAttributeList = new ArrayList<>();
     private List<AttributeItem> manifestAttributeList = new ArrayList<>();
 
+    private SDK sdk = null;
+
     public List<String> getUsesPermissionList() {
         return usesPermissionList;
     }
@@ -62,6 +64,15 @@ public class ModificationProperty {
         return this;
     }
 
+    public ModificationProperty addSDK(SDK sdk) {
+        this.sdk = sdk;
+        return this;
+    }
+
+    public SDK getSDK() {
+        return sdk;
+    }
+
     public static class MetaData {
         private String name;
         private String value;
@@ -82,5 +93,30 @@ public class ModificationProperty {
         public String getValue() {
             return value;
         }
+    }
+
+    public static class SDK {
+        private int minSDK;
+        private int maxSDK;
+        private int targetSDK;
+
+        public SDK(int minSDK, int maxSDK, int targetSDK) {
+            this.minSDK = minSDK;
+            this.maxSDK = maxSDK;
+            this.targetSDK = targetSDK;
+        }
+
+        public int getMinSDK() {
+            return minSDK;
+        }
+
+        public int getMaxSDK() {
+            return maxSDK;
+        }
+
+        public int getTargetSDK() {
+            return targetSDK;
+        }
+
     }
 }

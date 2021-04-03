@@ -40,6 +40,10 @@ public class ManifestTagVisitor extends ModifyAttributeVisitor {
         if (NodeValue.UsesPermission.TAG_NAME.equals(name)) {
             return new UserPermissionTagVisitor(child, getUsesPermissionGetter(), null);
         }
+
+        if (NodeValue.UsesSDK.TAG_NAME.equals(name)) {
+            return new UseSdkTagVisitor(child, properties.getSDK());
+        }
         return child;
     }
 
